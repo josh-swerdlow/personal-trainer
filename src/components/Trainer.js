@@ -12,27 +12,22 @@ import {
   VolumeX,
 } from "lucide-react";
 
-const WORKOUT_STAGE = {
-  /* Initial Stage */
+const WORKOUT_STATE  = {
+  /* Initial State */
   IDLE: 0,
-  /* Running Stages */
+  /* Running States */
   PREPARING: 1,
   EXERCISING: 2,
   RESTING: 3,
-  /* Terminal Stage */
+  /* Terminal State */
   COMPLETED: 4
 };
 
 const Trainer = () => {
   const [time, setTime] = useState(0);
-  const [workoutState, setWorkoutState] = useState({
-    stage: WORKOUT_STAGE.IDLE,
-    exerciseIndex: 0,
-  });
+  const [workoutState, setWorkoutState] = useState(WORKOUT_STATE.IDLE);
   const [isMuted, setIsMuted] = useState(false);
-  // const isTransitioning = useRef(false);
-  const isProcessing = useRef(false);
-
+  const exerciseIndex = useRef(0);
   const exercises = [
     {
       name: "Push-ups",
@@ -74,12 +69,8 @@ const Trainer = () => {
     if (isWorkoutAppIdle()) appState = "IDLE";
     if (isWorkoutAppCompleted()) appState = "COMPLETED";
     console.log("Application State:", appState);
-
-    console.log("Workout State:", {
-      stage: Object.keys(WORKOUT_STAGE)[workoutState.stage], // Shows name instead of number
-      exerciseIndex: workoutState.exerciseIndex,
-      exercise: exercises[workoutState.exerciseIndex].name,
-    });
+    console.log("Exercise Index:", exerciseIndex.current);
+    console.log("Workout State:", workoutState);
   }, [workoutState]);
 
 
@@ -94,67 +85,29 @@ const Trainer = () => {
 
   /* Workout State Management */
   /* Setters */
-  const setXWorkoutState = (newStage) => {
-    setWorkoutState(prev => ({...prev, stage: newStage}));
-  };
-
   const setPreparingWorkoutState = () => {
-    setXWorkoutState(WORKOUT_STAGE.PREPARING);
+    setWorkoutStage(WORKOUT_STATE.PREPARING);
   };
 
   const setExercisingWorkoutState = () => {
-    setXWorkoutState(WORKOUT_STAGE.EXERCISING);
+    setWorkoutStage(WORKOUT_STATE.EXERCISING);
   };
 
-  // const setRestingWorkoutState = () => {
-  //   setXWorkoutState(WORKOUT_STAGE.RESTING);
-  // };
-
   const setIdleWorkoutState = () => {
-    setXWorkoutState(WORKOUT_STAGE.IDLE);
+    setWorkoutStage(WORKOUT_STATE.IDLE);
   };
 
   const setCompletedWorkoutState = () => {
-    setXWorkoutState(WORKOUT_STAGE.COMPLETED);
+    setWorkoutStage(WORKOUT_STATE.COMPLETED);
   };
-
-  const setWorkoutStateIndex = (newIndex) => {
-    setWorkoutState((prev) => ({
-      ...prev,
-      exerciseIndex: newIndex,
-    }));
-  };
-
-  // const incrWorkoutStateIndex = () => {
-  //   setWorkoutState((prev) => ({
-  //     ...prev,
-  //     exerciseIndex: prev.exerciseIndex + 1,
-  //   }))
-  // };
 
   /* Getters */
-  const isStateX = (X) => {
-    // console.log('Checking state:', { current: workoutState.stage, expected: X });
-    return workoutState.stage === X;
-  };
+  const isIdle = () => workoutState === WORKOUT_STATE.IDLE;
+  const isPreparing = () => workoutState === WORKOUT_STATE.PREPARING;
+  const isExercising = () => workoutState === WORKOUT_STATE.EXERCISING;
+  const isResting = () => workoutState === WORKOUT_STATE.RESTING;
+  const isCompleted = () => workoutState === WORKOUT_STATE.COMPLETED;
 
-  const isIdle = () => { return isStateX(WORKOUT_STAGE.IDLE); };
-
-  const isPreparing = () => {
-    return isStateX(WORKOUT_STAGE.PREPARING);
-  };
-
-  const isExercising = () => {
-    return isStateX(WORKOUT_STAGE.EXERCISING);
-  };
-
-  const isResting = () => {
-    return isStateX(WORKOUT_STAGE.RESTING);
-  };
-
-  const isCompleted = () => {
-    return isStateX(WORKOUT_STAGE.COMPLETED);
-  };
 
   /* Workout Application States */
   const isWorkoutAppRunning = () => {
@@ -183,14 +136,14 @@ const Trainer = () => {
   };
 
   const startPreparing = () => {
-    const exercise = exercises[workoutState.exerciseIndex];
+    const exercise = exercises[exerciseIndex];
     setPreparingWorkoutState();
     setTime(exercise.preparation);
     speak(`Starting ${exercise.name} in ${exercise.preparation} seconds`);
   };
 
   const startExercising = () => {
-    const exercise = exercises[workoutState.exerciseIndex];
+    const exercise = exercises[exerciseIndex];
     setExercisingWorkoutState();
     setTime(exercise.duration);
     speak(
@@ -199,15 +152,11 @@ const Trainer = () => {
   };
 
   const startResting = () => {
-    const currExercise = exercises[workoutState.exerciseIndex];
+    const currExercise = exercises[exerciseIndex];
     setTime(currExercise.cooldown);
     speak(`Rest for ${currExercise.cooldown} seconds`);
-    setWorkoutState((prev) => ({
-      ...prev,
-      stage: WORKOUT_STAGE.RESTING,
-      exerciseIndex: prev.exerciseIndex + 1}));
-    // setRestingWorkoutState();
-    // incrWorkoutStateIndex();
+    setWorkoutState(WORKOUT_STATE.RESTING);
+    exerciseIndex.current++;
   };
 
   const completeWorkout = () => {
@@ -228,65 +177,42 @@ const Trainer = () => {
     speak("Workout reset. Ready to begin.");
   };
 
-  // Timer @Jared, but is in this useEffect. It double runs.
+  // Timer
   useEffect(() => {
     let interval;
-    console.log("Start: useEffect");
-
-    // Clear any existing intervals immediately
-    if (interval) {
-      console.log("Cleared interval (begining):", interval);
-      clearInterval(interval);
-    }
 
     if (isWorkoutAppRunning()) {
       interval = setInterval(() => {
-        if (isProcessing.current) {
-          console.log("Skipping update - already processing");
-          return;
-        }
 
         setTime(prev => {
-          console.log('setTime callback  executing',
-            'interval:', interval,
-            'prev:', prev,
-            'isProcessing:', isProcessing.current,
-            'stage:', workoutState.stage);
-          if (isProcessing.current) {
-            console.log("Skipping update - already processing");
-            return prev;  // Return prev instead of decrementing when locked
-          }
-
-          isProcessing.current = true;
 
           if (prev <= 3) {
             speak(prev.toString());
           }
 
           if (prev <= 1) {
-            const exercise = exercises[workoutState.exerciseIndex];
+            const exercise = exercises[exerciseIndex];
 
             switch (workoutState.stage) {
-              case WORKOUT_STAGE.PREPARING:
-                console.log("Workout Stage: PREPARING -> EXERCISING", exercise);
+              case WORKOUT_STATE.PREPARING:
+                console.info("Workout Stage: PREPARING -> EXERCISING", exercise);
                 startExercising();
                 break;
 
-              case WORKOUT_STAGE.EXERCISING:
-                console.log("Workout Stage: EXERCISING -> RESTING", exercise);
-                if (workoutState.exerciseIndex < exercises.length - 1) {
-                  console.log("Going to rest");
-                  startResting(); // @Jared this dbl increments
+              case WORKOUT_STATE.EXERCISING:
+                console.info("Workout Stage: EXERCISING -> RESTING", exercise);
+                if (exerciseIndex < exercises.length - 1) {
+                  startResting();
                 } else {
                   console.warn("Last exercise, but not completed");
                 }
                 break;
 
-              case WORKOUT_STAGE.RESTING:
-                console.log("Workout Stage: RESTING -> PREPARING", exercise);
+              case WORKOUT_STATE.RESTING:
+                console.info("Workout Stage: RESTING -> PREPARING", exercise);
                 // Last exercise
-                if (workoutState.exerciseIndex == exercises.length - 1) {
-                  const exercise = exercises[workoutState.exerciseIndex];
+                if (exerciseIndex == exercises.length - 1) {
+                  const exercise = exercises[exerciseIndex];
                   speak(`Rest for ${exercise.cooldown} seconds`);
                   completeWorkout();
                 } else {
@@ -299,36 +225,27 @@ const Trainer = () => {
                 return 0;
             }
           }
-
-          isProcessing.current = false;
           return prev - 1;
         });
       }, 1000);
-      console.log("Created interval:", interval);
     } else {
-      console.log("Application is not running. UseEffect will not run");
+      console.warn("State is being changed while application is not running.");
     }
 
-    console.log("End: useEffect");
-    return () => {
-      if (interval) {
-        console.log("Cleared interval (return):", interval);
-        clearInterval(interval);
-      }
-      isProcessing.current = false;
-    };
+    // Cleanup
+    return () => { clearInterval(interval); };
   }, [workoutState]);
 
-  const exercise = exercises[workoutState.exerciseIndex];
+  const exercise = exercises[exerciseIndex];
 
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold">
-            {workoutState === WORKOUT_STAGE.COMPLETED
+            {workoutState === WORKOUT_STATE.COMPLETED
               ? "Workout Complete!"
-              : workoutState === WORKOUT_STAGE.RESTING
+              : workoutState === WORKOUT_STATE.RESTING
               ? "Rest Time"
               : workoutState.exercise}
           </div>
@@ -347,8 +264,8 @@ const Trainer = () => {
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
-          {!workoutState === WORKOUT_STAGE.COMPLETED &&
-           !workoutState === WORKOUT_STAGE.RESTING && (
+          {!workoutState === WORKOUT_STATE.COMPLETED &&
+           !workoutState === WORKOUT_STATE.RESTING && (
             <div className="space-y-4">
               <div className="text-lg text-center">
                 {exercise.reps || exercise.time}
@@ -400,9 +317,9 @@ const Trainer = () => {
               <div
                 key={idx}
                 className={`h-2 w-2 rounded-full ${
-                  idx === workoutState.exerciseIndex
+                  idx === exerciseIndex
                     ? "bg-blue-500"
-                    : idx < workoutState.exerciseIndex
+                    : idx < exerciseIndex
                     ? "bg-green-500"
                     : "bg-gray-300"
                 }`}
