@@ -1,0 +1,370 @@
+{
+  "name": "Post Skate Stretch",
+  "description": "Stretch after a skate session",
+  "exercises": [
+    {
+      "name": "Wall Split (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Forward Hamstring Stretch (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Backward Hamstring Stretch (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Split (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Forward Hamstring Stretch (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Spiral Hamstring (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Spiral Height Stretch (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Feet Together Hamstring Stretch",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Standing Middle Split",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Right/Left Feet Apart Pancake",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Yoga Squat",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Cossack Squats (alternating)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Cossack Squat Hold (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Cossack Squat Hold (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Plies",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Calf Stretch (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Calf Stretch (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Seated open gate (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Seated open gate (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Lunge (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Lunge (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Elevated Deep Lunge (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Elevated Deep Lunge (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Door Lat Stretch (right)",
+      "instruction": "",
+      "duration": 15,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Door Lat Stretch (left)",
+      "instruction": "",
+      "duration": 15,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Shoulder Back Scratches (right under)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Shoulder Back Scratches (left over)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Wall Walkout Back Bend",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Butterfly Pose",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip 90-90 External Rotation (right)",
+      "instruction": "",
+      "duration": 10,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip 90-90 External Rotation (left)",
+      "instruction": "",
+      "duration": 10,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip 90-90 Interanl Rotation (right)",
+      "instruction": "",
+      "duration": 10,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip 90-90 Interanl Rotation (left)",
+      "instruction": "",
+      "duration": 10,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip 90-90",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hurdler Stretch (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip Flexion Stretch (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Laying Down Hamstring Stretch (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Glute Stretch (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Quad Stretch (right)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hurdler Stretch (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Hip Flexion Stretch (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Laying Down Hamstring Stretch (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Glute Stretch (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Quad Stretch (left)",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Frog Stretch",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Boat Pose",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Ankle Stretch",
+      "instruction": "",
+      "duration": 30,
+      "preparation": 0,
+      "cooldown": 0
+    },
+    {
+      "name": "Round 1: Spiral Height Stretch (right)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Round 1: Spiral Height Stretch (left)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Round 1: Full Depth Squat",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Round 1: Middle Split",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Round 1: Forward Pancake (on ground)",
+      "instruction": "",
+      "duration": 60,
+      "preparation": 5,
+      "cooldown": 5
+    }
+  ]
+}
