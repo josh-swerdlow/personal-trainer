@@ -413,7 +413,7 @@ const Trainer = ({ selectedWorkout }: TrainerProps) => {
               </div>
               <Button
                 variant="ghost"
-                size="icon"
+                size="sm"
                 onClick={() => {
                   setIsMuted((prev) => !prev);
                   if (isMuted) {
