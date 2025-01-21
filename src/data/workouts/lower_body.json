@@ -1,0 +1,27 @@
+{
+  "name": "Lower Body Power",
+  "description": "Focus on legs and glutes",
+  "exercises": [
+    {
+      "name": "Jump Squats",
+      "instruction": "Land softly, immediately squat",
+      "duration": 10,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Lunges",
+      "instruction": "Keep front knee above ankle",
+      "duration": 10,
+      "preparation": 5,
+      "cooldown": 5
+    },
+    {
+      "name": "Calf Raises",
+      "instruction": "Full range of motion, slow down",
+      "duration": 10,
+      "preparation": 5,
+      "cooldown": 5
+    }
+  ]
+}
