@@ -1,6 +1,7 @@
 "use client";
 
 import Trainer from '../components/Trainer';
+import BottomBanner from '../components/BottomBanner';
 import { Select } from "@mantine/core";
 import { useState } from 'react';
 import { workoutNames } from '../data/workouts';
@@ -20,6 +21,7 @@ export default function Home() {
                 onChange={setSelectedWorkout}
             />
             <Trainer selectedWorkout={selectedWorkout} />
+            <BottomBanner />
         </main>
     );
 }
